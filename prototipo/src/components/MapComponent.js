@@ -10,8 +10,10 @@ import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import Fab from '@mui/material/Fab';
 import { fromLonLat } from 'ol/proj';
+import PopupSidebar from './PopupSidebar';
 import Tree from './Tree'
 import TreeIcon from '@mui/icons-material/AccountTree';
+import TreeSidebar from './TreeSidebar';
 
 const MapComponent = () => {
   const mapRef = useRef();
@@ -62,38 +64,41 @@ const MapComponent = () => {
     }
   };
 
-//   const handleOpenTree = () => {
-//     setTreeVisible(true);
-//   };
-  
-//   const handleCloseTree = () => {
-//     setTreeVisible(false);
-//   };
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
       <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
-      <Grid container spacing={2} style={{ position: 'absolute', top: '20px', left: '20px' }}>
+      
+      <Grid container spacing={2} style={{ position: 'absolute', top: '20px', left: '20px', flexDirection: 'column' }}>
         <Grid item>
           <Fab color="primary" aria-label="zoom-in" onClick={handleZoomIn}>
             <ZoomInIcon />
           </Fab>
         </Grid>
-</Grid>
-      <Grid container spacing={2} style={{ position: 'absolute', top: '70px', left: '20px', marginTop: '0px' }}>
         <Grid item>
           <Fab color="primary" aria-label="zoom-out" onClick={handleZoomOut}>
             <ZoomOutIcon />
           </Fab>
         </Grid>
       </Grid>
-      <div style={{ position: 'absolute', top: '20px', right: '30px' }}>
-        <Fab color="primary" aria-label="fullscreen" onClick={handleFullScreen}>
-          <FullscreenIcon />
-        </Fab>
-      </div>
-</div>
+      
+      <Grid container spacing={2} style={{ position: 'absolute', top: '20px', right: '20px', flexDirection: 'row-reverse' }}>
+        <Grid item>
+          <TreeSidebar />
+        </Grid>
+        <Grid item>
+          <PopupSidebar />
+        </Grid>
+        <Grid item>
+          <Fab color="primary" aria-label="fullscreen" onClick={handleFullScreen}>
+            <FullscreenIcon />
+          </Fab>
+        </Grid>
+      </Grid>
+     
+    </div>
   );
+
 };
 
 export default MapComponent;
