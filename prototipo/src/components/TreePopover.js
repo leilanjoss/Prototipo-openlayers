@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-// import TreeIcon from '@mui/icons-material/AccountTree';
-import CloseIcon from '@mui/icons-material/Close';
+import { Popover, Fab } from '@mui/material';
+// import DehazeIcon from '@mui/icons-material/Dehaze';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import CloseIcon from '@mui/icons-material/Close';
 import Tree from './Tree';
-import { Fab, Popover, Box } from '@mui/material';
-import DehazeIcon from '@mui/icons-material/Dehaze';
 
 const TreePopover = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -17,19 +16,19 @@ const TreePopover = () => {
     }
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
       <Fab color="primary" aria-label="toggle-popover" onClick={togglePopover}>
-        {open ? <CloseIcon /> : <FormatListBulletedIcon />}
+        {anchorEl ? <CloseIcon /> : <FormatListBulletedIcon />}
       </Fab>
       <Popover
-        id={id}
-        open={open}
+        open={Boolean(anchorEl)}
         anchorEl={anchorEl}
-        onClose={togglePopover}
+        onClose={handleClose}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
@@ -42,13 +41,12 @@ const TreePopover = () => {
           style: { marginTop: '10px', width: '350px', height: '80%' },
         }}
       >
-        <Box p={2}>
+        <div style={{ padding: 16 }}>
           <Tree />
-        </Box>
+        </div>
       </Popover>
     </>
   );
 };
 
 export default TreePopover;
-

@@ -15,6 +15,10 @@ const PopupPopover = () => {
     }
   };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
@@ -37,11 +41,11 @@ const PopupPopover = () => {
           horizontal: 'center',
         }}
         PaperProps={{
-          style: { marginTop: '10px', width: '350px', height: '350px' },
+          style: { marginTop: '10px', width: '360px', height: '400px' },
         }}
       >
         <Box p={2}>
-          <Popup />
+          <Popup handleClose={handleClose} />
         </Box>
       </Popover>
     </>
