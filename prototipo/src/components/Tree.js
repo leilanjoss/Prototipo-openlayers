@@ -1,4 +1,3 @@
-//Teste
 import React, { useState } from 'react';
 
 const Tree = () => {

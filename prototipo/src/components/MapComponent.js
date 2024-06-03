@@ -4,14 +4,14 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import Fab from '@mui/material/Fab';
 import { fromLonLat } from 'ol/proj';
-import PopupSidebar from './PopupSidebar';
-import TreeSidebar from './TreeSidebar';
+import PopupPopover from './PopupPopover';
+import TreePopover from './TreePopover';
 import TableBottomBar from './TableBottomBar';
 
 const MapComponent = () => {
@@ -82,10 +82,10 @@ const MapComponent = () => {
       
       <Grid container spacing={2} style={{ position: 'absolute', top: '20px', right: '20px', flexDirection: 'row-reverse' }}>
             <Grid item>
-                <TreeSidebar />
+                <TreePopover />
             </Grid>
             <Grid item>
-                <PopupSidebar />
+                <PopupPopover />
             </Grid>
             <Grid item>
                 <Fab color="primary" aria-label="fullscreen" onClick={handleFullScreen}>
@@ -102,7 +102,7 @@ const MapComponent = () => {
 
     </div>
   );
-  
+
 };
 
 export default MapComponent;
